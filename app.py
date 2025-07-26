@@ -2,13 +2,23 @@ from flask import Flask, render_template, request, redirect, url_for
 import joblib
 import re
 import spacy
+import spacy.cli
+import os
 from textblob import TextBlob
 from collections import defaultdict
+
+# os.environ['SPACY_ALLOW_DOWNLOAD'] = 'true'
+
+try:
+    nlp = spacy.load('en_core_web_sm')
+except OSError:
+    spacy.cli.download('en_core_web_sm')
+    nlp = spacy.load('en_core_web_sm')
 
 app = Flask(__name__)
 
 # Load NLP models
-nlp = spacy.load('en_core_web_sm')
+# nlp = spacy.load('en_core_web_sm')
 models = {
     'toxic': joblib.load('model/toxic_model.pkl'),
     'severe_toxic': joblib.load('model/severe_toxic_model.pkl'),
