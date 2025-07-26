@@ -98,6 +98,28 @@
         border-radius: 20px;
         font-weight: 500;
     }
+    @media (max-width: 992px) {
+        .detection-container {
+            flex-direction: column;
+        }
+        
+        .input-section, .analysis-section {
+            width: 100%;
+        }
+        
+        textarea {
+            min-height: 200px;
+        }
+        
+        .result-message {
+            font-size: 1.2rem;
+            padding: 1rem;
+        }
+        
+        .abusive-details h3 {
+            font-size: 1.1rem;
+        }
+    }
 </style>
 {% endblock %}
 
