@@ -1,0 +1,11 @@
+pandas
+scikit-learn
+streamlit
+numpy
+joblib
+nltk
+spacy
+textblob
+flask
+en-core-web-sm
+gunicorn

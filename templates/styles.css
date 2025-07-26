@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(to bottom, #f4eefc 0%, #fdfdfd 100%);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    font-weight: bold;
+}
+
+.logo {
+    font-size: 18px;
+    color: #444;
+}
+
+.nav-links a {
+    margin: 0 15px;
+    color: #444;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.hero h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.primary-btn {
+    background-color: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.subheading {
+    margin-top: 20px;
+    color: #555;
+    font-size: 14px;
+}
+
+.chat-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 10%;
+    background-color: #fffdf7;
+    flex-wrap: wrap;
+}
+
+.chat-box, .analysis-box {
+    background-color: #fcfcfc;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 45%;
+    min-width: 300px;
+    margin-bottom: 20px;
+}
+
+.chat-box textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    resize: none;
+    overflow-y: hidden;
+}
+
+.refine-btn {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin-top: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.analysis-box .tags {
+    margin-bottom: 10px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 4px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #fff;
+}
+
+.tag.gaslighting { background-color: #a18fd1; }
+.tag.isolation { background-color: #f2c6c2; }
+.tag.manipulation { background-color: #b5d9a8; }
+
+.phrase {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #fff1dd;
+    border-radius: 6px;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.understand-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #6c63ff;
+    text-decoration: none;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 10%;
+    background-color: #f8f8f8;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    width: 30%;
+    min-width: 200px;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #444;
+    text-align: center;
+}
+
+.contact-section {
+    padding: 40px 10%;
+    text-align: center;
+}
+
+.contact-section input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}

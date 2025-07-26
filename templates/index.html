@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SILENT SIGNALS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #5a54d1;
+            --danger: #ff4d4f;
+            --success: #52c41a;
+            --warning: #faad14;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text);
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .input-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .input-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .input-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .analyze-btn {
+            align-self: flex-end;
+            padding: 0.75rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .analyze-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .result-section {
+            display: none;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .category-box {
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tag {
+            background-color: #f0f0f0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .tag-toxic { background-color: #fff2e8; color: #fa8c16; }
+        .tag-severe_toxic { background-color: #fff1f0; color: #ff4d4f; }
+        .tag-obscene { background-color: #fff0f6; color: #eb2f96; }
+        .tag-threat { background-color: #f6ffed; color: #52c41a; }
+        .tag-insult { background-color: #f0f5ff; color: #1890ff; }
+        .tag-identity_hate { background-color: #f9f0ff; color: #722ed1; }
+        
+        .abusive-phrases {
+            margin-top: 1rem;
+        }
+        
+        .phrase {
+            background-color: #fff2f0;
+            border-left: 3px solid var(--danger);
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .help-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .resources-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .abusive-keywords {
+            margin-top: 1rem;
+        }
+        
+        .keywords-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .keyword {
+            background-color: #fff2f0;
+            color: var(--danger);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .abusive-result {
+            color: var(--danger);
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+        
+        .non-abusive-result {
+            color: var(--success);
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+        
+        .abuse-definition {
+            background-color: #f6f6f6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .abuse-definition h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .abuse-examples {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .abuse-examples ul {
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SILENT SIGNALS</h1>
+            <h2>Detection Resources About</h2>
+            <p class="tagline">Decode the unspoken. Understand the silent signals.</p>
+        </header>
+        
+        <section class="description">
+            <p><strong>Compassion Engine helps detect the subtle signs of emotional abuse in text-based conversations.</strong></p>
+            <p>Your data stays yours. Anonymous. Secure. Judgement-free.</p>
+        </section>
+        
+        <div class="card">
+            <div class="input-section">
+                <h2>Check a Conversation</h2>
+                <div class="input-options">
+                    <button class="input-btn">Paste a conversation</button>
+                    <button class="input-btn">Upload File</button>
+                    <button class="input-btn">Refine your text</button>
+                </div>
+                <form action="/predict" method="POST">
+                    <textarea name="user_input" placeholder="Paste text to analyze...">{{ user_input if user_input else '' }}</textarea>
+                    <button type="submit" class="analyze-btn">Analyze</button>
+                </form>
+            </div>
+        </div>
+        
+        {% if result %}
+        <div class="card result-section" style="display: block;">
+            <div class="{{ 'abusive-result' if is_abusive else 'non-abusive-result' }}">
+                {{ result|safe }}
+            </div>
+            
+            {% if is_abusive %}
+            <div class="result-grid">
+                <div>
+                    <div class="category-box">
+                        <h3>Detected Abuse Types</h3>
+                        <div class="category-tags">
+                            {% for abuse_type in abuse_types %}
+                                <span class="tag tag-{{ abuse_type }}">{{ ABUSE_DEFINITIONS[abuse_type]['name'] }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="abusive-keywords">
+                        <h3>Detected Keywords</h3>
+                        <div class="keywords-list">
+                            {% if abusive_keywords %}
+                                {% for keyword in abusive_keywords %}
+                                    <span class="keyword">{{ keyword }}</span>
+                                {% endfor %}
+                            {% else %}
+                                <span>No specific keywords detected</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Abusive Phrases</h3>
+                    <div class="abusive-phrases">
+                        <div class="phrase">Detected abusive patterns in the text</div>
+                        <a href="#" class="help-link">Help Me Understand This ►</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="abuse-definitions">
+                <h3>About the Detected Abuse Types</h3>
+                {% for definition in abuse_definitions %}
+                <div class="abuse-definition">
+                    <h4>{{ definition.name }}</h4>
+                    <p>{{ definition.description }}</p>
+                    <div class="abuse-examples">
+                        <p>Examples:</p>
+                        <ul>
+                            {% for example in definition.examples %}
+                                <li>{{ example }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        <div class="card">
+            <h2>Resources</h2>
+            <div class="resources-section">
+                <div>
+                    <h3>Helplines</h3>
+                    <p>Contact information for support organizations</p>
+                </div>
+                <div>
+                    <h3>Educational Content</h3>
+                    <p>Learn more about emotional abuse</p>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="card">
+            <p>Dedicated to recognizing and combating emotional abuse in everyday interactions.</p>
+        </div>
+        
+        <div class="card">
+            <h2>Research</h2>
+            <p>Our research paper details the development and findings of Compassion Engine.</p>
+            <a href="#" class="help-link">Read the Science ►</a>
+        </div>
+        
+        <div class="card">
+            <h2>Contact/Feedback</h2>
+            <p>We'd love to hear from you</p>
+            <button class="input-btn">Message</button>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2023 Silent Signals. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

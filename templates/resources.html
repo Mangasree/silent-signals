@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Resources{% endblock %}
+
+{% block extra_css %}
+<style>
+    .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .resource-card {
+        padding: 1.5rem;
+        border-radius: 8px;
+        background-color: var(--card-bg);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .resource-card h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+    
+    .resource-card ul {
+        padding-left: 1.5rem;
+        margin-top: 1rem;
+    }
+    
+    .resource-card li {
+        margin-bottom: 0.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Resources</h1>
+<p style="margin-bottom: 2rem;">Find help and support to deal with emotional abuse</p>
+
+<div class="resources-grid">
+    <div class="resource-card">
+        <h3>Helplines</h3>
+        <p>Immediate support is available through these services:</p>
+        <ul>
+            <li>Women Helpline – 181. 
+                Government-run support for women in distress, including emotional/verbal abuse.</li>
+            <li>National Commission for Women (NCW) Helpline – 7827170170
+                WhatsApp-based complaint service for harassment, abuse, or emotional violence.</li>
+        </ul>
+    </div>
+    
+    <div class="resource-card">
+        <h3>Support Networks</h3>
+        <p>Reach out to these support systems:</p>
+        <ul>
+            <li>Trusted family members or friends</li>
+            <li>Local community support groups</li>
+            <li>Professional counselors or therapists</li>
+        </ul>
+    </div>
+    
+    <div class="resource-card">
+        <h3>Self-Care Tips</h3>
+        <p>Maintain your mental health:</p>
+        <ul>
+            <li>Practice mindfulness and meditation</li>
+            <li>Maintain a journal of your feelings</li>
+            <li>Set healthy boundaries in relationships</li>
+            <li>Engage in physical activity regularly</li>
+        </ul>
+    </div>
+    
+</div>
+{% endblock %}

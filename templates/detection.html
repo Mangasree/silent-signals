@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block title %}Detection{% endblock %}
+
+{% block extra_css %}
+<style>
+    .detection-container {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .input-section, .analysis-section {
+        flex: 1;
+    }
+    
+    textarea {
+        width: 100%;
+        min-height: 300px;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        resize: vertical;
+        font-family: inherit;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .analyze-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .abusive-phrase {
+        background-color: #fff2f0;
+        border-left: 3px solid var(--toxic);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 0 4px 4px 0;
+    }
+    
+    .highlight {
+        background-color: #ffeb3b;
+        padding: 0.1rem 0.3rem;
+        border-radius: 3px;
+        font-weight: bold;
+    }
+    
+    .section-title {
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary);
+    }
+    
+    .result-message {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+    }
+    
+    .abusive-message {
+        background-color: #fff2f0;
+        color: var(--toxic);
+        border: 2px solid var(--toxic);
+    }
+    
+    .safe-message {
+        background-color: #f6ffed;
+        color: var(--success);
+        border: 2px solid var(--success);
+    }
+    
+    .category-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .abusive-details {
+        margin-top: 2rem;
+    }
+    
+    .abusive-words {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+    
+    .abusive-word {
+        background-color: #fff2f0;
+        color: var(--toxic);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 500;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="detection-container">
+    <div class="input-section card">
+        <h2 class="section-title">Chat Input</h2>
+        <form action="/analyze" method="POST">
+            <textarea name="user_input" placeholder="Paste your conversation here...">{% if user_input %}{{ user_input }}{% endif %}</textarea>
+            <button type="submit" class="btn analyze-btn">Analyze</button>
+        </form>
+    </div>
+    
+    <div class="analysis-section card">
+        <h2 class="section-title">Analysis</h2>
+        
+        {% if analyzed %}
+            {% if is_abusive %}
+                <div class="result-message abusive-message">
+                    🚨 This conversation is ABUSIVE
+                </div>
+                
+                {% if show_details %}
+                    <div class="abusive-details">
+                        <h3>Detected Abuse Types:</h3>
+                        <div class="category-tags">
+                            {% for category in categories %}
+                                <span class="tag tag-{{ category.color }}">{{ category.name }}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        {% if abusive_words %}
+                            <h3>Abusive Words Found:</h3>
+                            <div class="abusive-words">
+                                {% for word in abusive_words %}
+                                    <span class="abusive-word">{{ word }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        
+                        {% if abusive_phrases %}
+                            <h3>Abusive Phrases:</h3>
+                            <div class="abusive-phrases">
+                                {% for phrase in abusive_phrases %}
+                                    <div class="abusive-phrase">
+                                        {% set highlighted = phrase.text.replace(phrase.abusive_part, '<span class="highlight">' + phrase.abusive_part + '</span>') %}
+                                        <div>{{ highlighted|safe }}</div>
+                                        <div style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem;">
+                                            ({{ ABUSE_DEFINITIONS[phrase.category]['name'] }})
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="result-message safe-message">
+                    ✅ This conversation is SAFE
+                </div>
+            {% endif %}
+        {% else %}
+            <p>Paste a conversation and click "Analyze" to see results.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

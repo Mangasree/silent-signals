@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-section {
+        margin-bottom: 3rem;
+    }
+    
+    .about-section h2 {
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+    
+    .about-section p {
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+    
+    .mission-statement {
+        background-color: #f9f5ff;
+        padding: 2rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--primary);
+        margin: 3rem 0;
+    }
+    
+    .quote {
+        font-style: italic;
+        text-align: center;
+        font-size: 1.3rem;
+        color: var(--primary-dark);
+        margin: 3rem 0;
+        padding: 0 2rem;
+    }
+    
+    .quote::before, .quote::after {
+        content: '"';
+        font-size: 1.5rem;
+        color: var(--primary);
+    }
+    
+    .process-steps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .process-step {
+        flex: 1;
+        min-width: 250px;
+        padding: 1.5rem;
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border-top: 3px solid var(--primary);
+    }
+    
+    .process-step h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="about-section">
+    <h1>About Silent Signals</h1>
+    <p class="tagline">Making the invisible wounds of emotional abuse visible through technology</p>
+</div>
+
+<div class="mission-statement">
+    <p>Silent Signals was born from a deeply personal observation — that emotional abuse doesn't always leave visible scars, but its damage runs just as deep. Coming from a background where silence was often mistaken for peace, I realized how many people suffer through manipulation, gaslighting, bullying, and other forms of verbal abuse without ever being heard or validated.</p>
+</div>
+
+<div class="about-section">
+    <h2>Our Mission</h2>
+    <p>This project began as a mission to give voice to the unspoken. Using natural language processing (NLP) techniques like sentiment analysis and keyword recognition, Silent Signals scans conversations and identifies subtle patterns of emotional abuse.</p>
+    
+    <p>It doesn't just classify—it educates, breaking down the nature of abuse into clear categories so users can understand what's happening and why it's not okay.</p>
+</div>
+
+<div class="about-section">
+    <h2>How We Help</h2>
+    <div class="process-steps">
+        <div class="process-step">
+            <h3>Detect</h3>
+            <p>Our algorithms analyze text for patterns of gaslighting, manipulation, bullying, and other abusive behaviors.</p>
+        </div>
+        <div class="process-step">
+            <h3>Educate</h3>
+            <p>We explain why certain phrases are harmful, helping users recognize abuse they might have missed.</p>
+        </div>
+        <div class="process-step">
+            <h3>Empower</h3>
+            <p>We provide resources and guidance to help users take next steps toward healthier relationships.</p>
+        </div>
+    </div>
+</div>
+
+<div class="about-section">
+    <h2>Why This Matters</h2>
+    <p>Whether it's a toxic friendship, a controlling relationship, or online bullying, Silent Signals is a step towards awareness and action. By making emotional abuse visible through tech, this project empowers users to recognize red flags early and seek help.</p>
+    
+    <p>Built with empathy. Backed by code. Aimed at healing.</p>
+</div>
+
+<div class="quote">
+    Not all wounds are visible. But now, their signals are.
+</div>
+
+<div class="about-section">
+    <h2>Our Promise</h2>
+    <p>Silent Signals is committed to:</p>
+    <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;">Providing accurate, judgment-free analysis</li>
+        <li style="margin-bottom: 0.5rem;">Keeping your data private and secure</li>
+        <li style="margin-bottom: 0.5rem;">Continuously improving our detection methods</li>
+        <li style="margin-bottom: 0.5rem;">Offering compassionate support resources</li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+    
+    /* .hero-text {
+        flex: 60%;
+    }
+    
+    .hero-image {
+        flex: 40%;
+    } */
+    
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    
+    .hero h1 span {
+        display: block;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: var(--text-light);
+        /* color: whitesmoke; */
+    }
+    
+    .hero .btn {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+    }
+
+    .partB p {
+        font-size: large;
+        color: rgb(90, 90, 90);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-text">
+        <h1>
+            <span>Decode the unspoken.</span>
+            <span>Understand the silent signals.</span>
+        </h1>
+        <a href="/detection" class="btn">Check a Conversation</a>
+        
+    </div>
+</div>
+<div class="partB">
+    <div class="partB">
+    <p>Helps detect the signs of emotional abuse in text-based conversations.</p>
+    <p><small>Your data stays yours. Anonymous. Secure. Judgement-free.</small></p>
+</div>
+</div>
+{% endblock %}
