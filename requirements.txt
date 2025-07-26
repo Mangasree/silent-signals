@@ -1,3 +1,4 @@
+python-3.10.14
 pandas
 scikit-learn
 streamlit
@@ -7,5 +8,5 @@ nltk
 spacy
 textblob
 flask
-en-core-web-sm
 gunicorn
+
