@@ -64,6 +64,33 @@
         color: var(--primary);
         margin-bottom: 1rem;
     }
+    @media (max-width: 768px) {
+        .about-section h1 {
+            font-size: 2rem;
+        }
+        
+        .about-section h2 {
+            font-size: 1.5rem;
+        }
+        
+        .process-steps {
+            flex-direction: column;
+        }
+        
+        .process-step {
+            min-width: 100%;
+        }
+        
+        .mission-statement {
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .quote {
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+    }
 </style>
 {% endblock %}
 
